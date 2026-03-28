@@ -1,0 +1,3 @@
+#   feedhandler        -> build/feedhandler
+#   ring buffer benchmark  -> build/ring_buffer_bench
+target: SPSCRingBuffer_benchmark

@@ -1,0 +1,2 @@
+# Feed handler runtime config (populated when feed handler is implemented).
+target: feedhandler
