@@ -7,6 +7,9 @@
 
 template <typename T, size_t Capacity>
 class SPSCRingBuffer {
+    static_assert(Capacity > 0, "Capacity must be positive");
+    static_assert((Capacity & (Capacity - 1)) == 0, "Capacity must be a power of 2");
+    static_assert(std::is_trivially_copyable_v<T>, "T must be trivially copyable");
 
 public:
     SPSCRingBuffer() = default;
@@ -27,11 +30,9 @@ public:
 private:
     static constexpr size_t kMask = Capacity - 1;
 
-    std::atomic<uint64_t> write_idx_{0};
-
-    std::atomic<uint64_t> read_idx_{0};
-
-    T buffer_[Capacity];
+    alignas(64) std::atomic<uint64_t> write_idx_{0};
+    alignas(64) std::atomic<uint64_t> read_idx_{0};
+    alignas(64) T buffer_[Capacity];
 };
 
 template <typename T, size_t Capacity>
