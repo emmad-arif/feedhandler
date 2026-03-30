@@ -21,6 +21,14 @@ public:
         std::free(data_);
     }
 
+    size_t capacity() const {
+        return capacity_;
+    }
+
+    size_t size() const {
+        return end_ - start_;
+    }
+
 private:
     size_t start_ = 0;
     size_t end_ = 0;
