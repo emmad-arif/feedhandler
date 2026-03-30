@@ -39,8 +39,8 @@ int main() {
     std::signal(SIGTERM, on_signal);
 
     // Queue commands before run() — they'll be sent once the connection is up.
-    client.subscribe("orderbook_delta", {"KXBTCD-25DEC31"});
-    client.subscribe("ticker",          {"KXBTCD-25DEC31"});
+    //client.subscribe("orderbook_delta", {"KXBTC15M-26MAR282200-00"});
+    client.subscribe("ticker",          {"KXBTC15M-26MAR282200-00"});
 
     client.run();
     return 0;
